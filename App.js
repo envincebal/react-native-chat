@@ -5,6 +5,7 @@ import Chat from "./components/Chat";
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 import KeyboardSpacer from "react-native-keyboard-spacer";
+import { connectActionSheet } from '@expo/react-native-action-sheet';
 
 const navigator = createStackNavigator({
   Start: {screen: Start},

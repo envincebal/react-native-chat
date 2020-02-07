@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, Platform, AsyncStorage, YellowBox } from "react-native";
+import { StyleSheet, Text, View, Button, Platform, AsyncStorage, YellowBox } from "react-native";
+import CustomActions from './CustomActions';
 import NetInfo from "@react-native-community/netinfo";
+import MapView from "react-native-maps";
 import {GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
 import KeyboardSpacer from "react-native-keyboard-spacer";
 const firebase = require("firebase");
@@ -50,6 +52,8 @@ export default class Chat extends Component {
     this.referenceMessages.add({
       user,
       _id: message._id,
+      image: message.image || null,
+      location: message.location || null,
       text: message.text || "",
       createdAt: message.createdAt
     });
@@ -71,6 +75,8 @@ export default class Chat extends Component {
       messages.push({
         _id: data._id,
         text: data.text,
+        image: data.image || null,
+        location: data.location,
         createdAt: data.createdAt.toDate(),
         user: data.user
       }); 
@@ -128,7 +134,7 @@ export default class Chat extends Component {
     }
   };
 
-  onSend(messages = []) {
+  onSend = (messages = []) => {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }), () => {
@@ -164,6 +170,31 @@ export default class Chat extends Component {
     )
   }
 
+  renderCustomActions = (props) => {
+    return <CustomActions {...props} />
+  }
+
+  renderCustomView = (props) => {
+    const {currentMessage} = props;
+    if (currentMessage.location){
+      return (
+        <MapView 
+        style={{width: 150,
+          height: 100,
+          borderRadius: 13,
+          margin: 3}}
+        region={{
+          latitude: currentMessage.location.latitude,
+          longitude: currentMessage.location.longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        />
+      );
+    }
+    return null;
+  }
+
   static navigationOptions = ({navigation}) => {
     return {
       title: navigation.state.params.name,
@@ -174,7 +205,9 @@ export default class Chat extends Component {
     return (
     <View style={{flex:1, justifyContent: "center", backgroundColor: this.props.navigation.state.params.color}}>
       <GiftedChat
+        renderCustomView={this.renderCustomView}
         renderBubble={this.renderBubble}
+        renderActions={this.renderCustomActions}
         renderInputToolbar={this.renderInputToolbar}
         messages={this.state.messages}
         user={this.state.user}
