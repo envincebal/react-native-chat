@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { StyleSheet, Text, View, Button, Platform, AsyncStorage, YellowBox } from "react-native";
+import {View, Platform, AsyncStorage, YellowBox} from "react-native";
 import CustomActions from './CustomActions';
 import NetInfo from "@react-native-community/netinfo";
 import MapView from "react-native-maps";
@@ -46,7 +46,7 @@ export default class Chat extends Component {
     }
   };
 
-  addMessage() {
+  addMessage = () => {
     let message = this.state.messages[0];
     let {user} = this.state;
     this.referenceMessages.add({
@@ -213,7 +213,6 @@ export default class Chat extends Component {
         user={this.state.user}
         onSend={messages => this.onSend(messages)}
       /> 
- 
       {Platform.OS === "android" ? <KeyboardSpacer /> : null } 
     </View>
     );

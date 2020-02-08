@@ -10,7 +10,7 @@ import "firebase/firestore";
 export default class CustomActions extends Component {
 
   uploadImage = async (uri) => {
-    try{
+    try {
       const blob = await new Promise((resolve, reject) =>{
         const xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -33,26 +33,26 @@ export default class CustomActions extends Component {
     blob.close();
     const imgUrl = await snapshot.ref.getDownloadURL();
     return imgUrl;
-    }catch(error){
+    } catch(error) {
       console.log(error)
     }
   }
 
   pickImg = async () => {
-    try{
+    try {
       const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 
-      if(status === "granted"){
+      if (status === "granted") {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
         }).catch(error => console.log(error));
 
-        if (!result.cancelled){
+        if (!result.cancelled) {
           const imageUrl = await this.uploadImage(result.uri);
           this.props.onSend({ image: imageUrl})
         }
       }
-    } catch (error){
+    } catch (error) {
       console.log(error.message)
     }
   }
@@ -77,17 +77,17 @@ export default class CustomActions extends Component {
 
   takePic = async () => {
     try{
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL, Permissions.CAMERA);
-      if(status === "granted"){
+    const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL, Permissions.CAMERA);
+      if (status === "granted") {
         let result = await ImagePicker.launchCameraAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.Images
         }).catch(error => console.log(error));
-        if (!result.cancelled){
+        if (!result.cancelled) {
           const imageUrl = await this.uploadImage(result.uri);
           this.props.onSend({ image: imageUrl})
         }
       }
-    } catch(error){
+    } catch(error) {
       console.log(error.message)
     }
   }
