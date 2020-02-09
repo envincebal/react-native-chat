@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity } from "react-native";
 
 export default class Start extends Component {
   constructor(props){
@@ -25,19 +25,19 @@ export default class Start extends Component {
             <Text style={styles.chooseBackgroundText}>Choose Background Color</Text>
             <View style={styles.chooseBackgroundColor}>  
               <TouchableOpacity
-                onPress={() => this.setState({ color: '#090C08'})}
+                onPress={() => this.setState({ color: "#090C08"})}
                 style={[styles.colorButton, styles.color1]}
               />
               <TouchableOpacity
-                onPress={() => this.setState({ color: '#474056'})}
+                onPress={() => this.setState({ color: "#474056"})}
                 style={[styles.colorButton, styles.color2]}
               />
               <TouchableOpacity
-                onPress={() => this.setState({ color: '#8A95A5'})}
+                onPress={() => this.setState({ color: "#8A95A5"})}
                 style={[styles.colorButton, styles.color3]}
               />
               <TouchableOpacity
-                onPress={() => this.setState({ color: '#B9C6AE'})}
+                onPress={() => this.setState({ color: "#B9C6AE"})}
                 style={[styles.colorButton, styles.color4]}
               />
             </View>
@@ -55,8 +55,8 @@ export default class Start extends Component {
 const styles = StyleSheet.create({
   container: {
     flex:1, 
-    justifyContent: 'center', 
-    alignItems: 'center'
+    justifyContent: "center", 
+    alignItems: "center"
   },
   backgroundImg: {
     width: "100%",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     flex: 4, 
     flexDirection: "row",
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     justifyContent: "space-between"
   },
   chooseBackgroundText:{
@@ -103,16 +103,16 @@ const styles = StyleSheet.create({
     height: 50
   },
   color1:{
-    backgroundColor: '#090C08'
+    backgroundColor: "#090C08"
   },
   color2:{
-    backgroundColor: '#474056'
+    backgroundColor: "#474056"
   },
   color3:{
-    backgroundColor: '#8A95A5'
+    backgroundColor: "#8A95A5"
   },
   color4:{
-    backgroundColor: '#B9C6AE'
+    backgroundColor: "#B9C6AE"
   },
   startChat: {
     fontWeight: "600",
@@ -125,5 +125,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center"}
 });
-
-
