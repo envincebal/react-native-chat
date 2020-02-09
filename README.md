@@ -1,15 +1,10 @@
 # react-native-chat
 
-Install dependencies: ```npm install```
-Run application:  ```expo/npm start```
+## Setup and run application
+1. Install dependencies: ```npm install```
+2. Download Expo app from Google Play Store/Apple App Store
+3. Run application:  ```expo/npm start```
+4. Open Expo app and scan QR Code on Expo desktop app to start running chat app on mobile device.
+5. Enter your name, choose background color then click start chatting.
 
-## Additional information
-Enter your name, choose background color then click start chatting.
 
-### Start page
-
-[![IMG-0734.png](https://github.com/envincebal/react-native-chat/blob/master/assets/start.jpg?raw=true)](https://github.com/envincebal/react-native-chat/blob/master/assets/start.jpg?raw=true)
-
-### Chat Page
-
-[![IMG-0735.png](https://github.com/envincebal/react-native-chat/blob/master/assets/start.jpg?raw=true)](https://github.com/envincebal/react-native-chat/blob/master/assets/start.jpg?raw=true)
