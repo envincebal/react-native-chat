@@ -8,3 +8,4 @@
 5. Enter your name, choose background color then click start chatting.
 
 
+<a href="https://trello.com/b/v7IJTRTl/react-native-chat-app">Kanban Board</a>.
